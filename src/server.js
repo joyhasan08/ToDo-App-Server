@@ -1,14 +1,37 @@
+// dotenv for DB
 require("dotenv").config();
-const http = require("http");
-const connectDB = require("./config/dbConnection");
+const connectDB = require("./config/dbConnection"); //DB Connection
 
+//createServer start
+const http = require("http");
+const app = require('./app');
 const port = 3000
 const server = http.createServer()
+// function startServer() {
+//     server.listen(port)
+//     console.log("server running");
+// }
+// startServer()
+//createServer End
 
-function startServer() {
+// Run Server With Mongoose
+const mongoose = require('mongoose');
+
+
+connectDB()
+
+mongoose.connection.once('open', () => {
     server.listen(port)
     console.log("server running");
-    console.log('hello server');
-}
-connectDB()
-startServer()
+
+})
+mongoose.connection.on('error', (error) => {
+    console.log(error);
+})
+
+
+
+
+
+
+
