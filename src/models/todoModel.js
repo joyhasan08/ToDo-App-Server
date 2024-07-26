@@ -1,10 +1,19 @@
 const Todo = require("./todoSchema");
 
 
-const addTodoModel = async () => {
-    console.log('add todo');
-    return ("add user")
+const addTodoModel = async (todoData) => {
+
+    const newTodoData = await Todo.create(todoData)
+    console.log(newTodoData);
+    return newTodoData;
+
 }
 
-module.exports = { addTodoModel }
+const getAllTodoModel = async () => {
+    const data = await Todo.find({})
+    console.log(data);
+    return data;
+}
+
+module.exports = { addTodoModel, getAllTodoModel }
 
