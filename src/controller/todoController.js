@@ -11,7 +11,8 @@ const addTodoController = asyncHandler(async (req, res) => {
 
 const getTodoDataController = asyncHandler(async (req, res) => {
     const data = await getAllTodoModel();
-    res.send(data)
+    console.log("get data ");
+    res.json(data)
 })
 
 module.exports = { addTodoController, getTodoDataController };
