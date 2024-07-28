@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler")
-const { addTodoModel, getAllTodoModel } = require("../models/todoModel")
+const { addTodoModel, getAllTodoModel, deleteTodoByIdModel } = require("../models/todoModel")
 
 
 const addTodoController = asyncHandler(async (req, res) => {
@@ -15,7 +15,14 @@ const getTodoDataController = asyncHandler(async (req, res) => {
     res.json(data)
 })
 
-module.exports = { addTodoController, getTodoDataController };
+const deleteToDoController = asyncHandler(async (req, res) => {
+    const id = req.params.id
+    const data = await deleteTodoByIdModel(id)
+    console.log(data);
+    res.send(data)
+})
+
+module.exports = { addTodoController, getTodoDataController, deleteToDoController };
 
 
 

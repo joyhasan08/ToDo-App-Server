@@ -15,5 +15,10 @@ const getAllTodoModel = async () => {
     return data;
 }
 
-module.exports = { addTodoModel, getAllTodoModel }
+const deleteTodoByIdModel = async (id) => {
+    await Todo.findOneAndDelete({ _id: id })
+    return ("deleted")
+}
+
+module.exports = { addTodoModel, getAllTodoModel, deleteTodoByIdModel }
 
