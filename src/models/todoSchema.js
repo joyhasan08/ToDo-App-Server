@@ -8,6 +8,11 @@ const todoSchema = new mongoose.Schema({
     task: {
         type: String,
         require: true
+    },
+    isDone: {
+        type: Boolean,
+        require: true,
+        default: false
     }
 });
 

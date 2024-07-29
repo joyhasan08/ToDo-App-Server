@@ -10,7 +10,7 @@ const addTodoModel = async (todoData) => {
 }
 
 const getAllTodoModel = async () => {
-    const data = await Todo.find({})
+    const data = await Todo.find({ isDone: false })
     console.log(data);
     return data;
 }
@@ -20,5 +20,16 @@ const deleteTodoByIdModel = async (id) => {
     return ("deleted")
 }
 
-module.exports = { addTodoModel, getAllTodoModel, deleteTodoByIdModel }
+const isDoneTodoListModel = async (id) => {
+    const doneData = await Todo.findOneAndUpdate({ _id: id }, { isDone: true })
+    return ('is done')
+}
+
+const getDoneTodoListModel = async () => {
+    const doneData = await Todo.find({ isDone: true })
+    console.log(doneData);
+    return doneData
+}
+
+module.exports = { addTodoModel, getAllTodoModel, deleteTodoByIdModel, isDoneTodoListModel, getDoneTodoListModel }
 
